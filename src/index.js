@@ -2,22 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './containers/App';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import todoApp from './reducers';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Footer from './components/Footer';
+import configurStore from './configurStore';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-const store = createStore(todoApp);
+
+const store = configurStore();
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter>
-            <div>
-                <Switch>
-                    <Route path="/:filter" component={App} />
-                </Switch>
-                <Footer />
-            </div>
-        </BrowserRouter>
+        <Router>
+            
+                    <Route path="/:filter?" component={App} />
+
+        </Router>
     </Provider>,
      document.getElementById('root')
 );
